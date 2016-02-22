@@ -47,7 +47,7 @@ public class Circle {
 		
 		double h = 0;
 		
-		h = Math.sqrt(Math.pow(centerX,2)+Math.pow(centerY, 2));
+		h = Math.sqrt(Math.pow(x,2)+Math.pow(y, 2));
 		
 		if(h>this.radius)return false;
 		
