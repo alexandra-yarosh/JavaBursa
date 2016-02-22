@@ -4,7 +4,7 @@ public class Vector {
 
 	private static final int DEFAULT_SIZE = 10;
 
-	private Object[] objects;
+	private String[] objects;
 	private int size;
 
 	/**
@@ -12,7 +12,7 @@ public class Vector {
 	 */
 	public Vector() {
 
-		this.objects = new Object[DEFAULT_SIZE];
+		this.objects = new String[DEFAULT_SIZE];
 		this.size = 10;
 	}
 
@@ -20,8 +20,11 @@ public class Vector {
 	 * Creates a new instance of Vector with a specified size.
 	 */
 	public Vector(int size) {
-		this.objects = new Object[size];
+		this.objects = new String[size];
 		this.size = size;
+
+		for (int i = 0; i < size; i++)
+			objects[i] = "empty string " + i;
 
 	}
 
@@ -31,7 +34,7 @@ public class Vector {
 	 * @param element
 	 *            - element to be appended to this vector
 	 */
-	public void add(Object element) {
+	public void add(String element) {
 		// creating a new vector with size +1 and copying all elements inside
 
 		Vector newVector = new Vector(size + 1);
@@ -51,7 +54,7 @@ public class Vector {
 	 * @return the element at the specified position in this vector
 	 */
 	public Object get(int index) {
-		if (index< this.size)
+		if (index < this.size)
 			return this.objects[index];
 		return null;
 	}
@@ -64,7 +67,19 @@ public class Vector {
 	 *            - the index of the element to be removed
 	 */
 	public void remove(int index) {
-		// TODO Auto-generated method stub
+
+		for (int i = index; i < this.size; i++) {
+
+			if (i == 0)
+				continue;
+			if (index == this.size - 1)
+
+				break;
+			else
+				this.objects[i - 1] = this.objects[i];
+
+		}
+		this.size--;
 	}
 
 	/**
@@ -78,5 +93,15 @@ public class Vector {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return super.toString();
+	}
+
+	public void printValues() {
+
+		System.out.println("Printing out vector of " + this.size + " elements: ");
+
+		for (int i = 0; i < this.size; i++)
+			System.out.println("vector [" + i + "] = " + this.objects[i]);
+		System.out.println();
+
 	}
 }
